@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import mongoDB from "./libs/connectDB.js";
+import mongoDB from "./libs/DB.js";
 import router from "./routes/route.js";
 import routerProduct from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
@@ -8,6 +8,9 @@ import cartRouter from "./routes/cartRouter.js";
 import adminRouter from "./routes/adminRouter.js";
 import orderRouter from "./routes/orderRouter.js";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 mongoDB();
 const app = express();
@@ -24,7 +27,9 @@ app.use("/cart", cartRouter);
 app.use("/admins", adminRouter);
 app.use("/orders", orderRouter);
 
-app.listen(3000, (error) => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, (error) => {
   if (error) {
     console.log("Error: ", error);
   } else {

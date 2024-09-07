@@ -1,4 +1,7 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const auth = async (req, res, next) => {
   const { token } = req.headers;
@@ -6,7 +9,7 @@ const auth = async (req, res, next) => {
     return res.send({ success: false, message: "Please Login!" });
   }
   try {
-    const decode = jwt.verify(token, "secret");
+    const decode = jwt.verify(token, JWT_SECRET);
     if (!decode) {
       return res.send({ success: false, message: "Invalid Token" });
     }

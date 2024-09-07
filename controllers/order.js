@@ -38,7 +38,7 @@ const order = async (req, res) => {
 // Function to create a Stripe session
 const createStripeSession = async (orderItems, orderId) => {
   try {
-    const frontend_url = "http://localhost:3001";
+    const frontend_url = "https://ecommerce-ashrafsarwar.netilfy.app"; // Replace with your frontend URL
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
