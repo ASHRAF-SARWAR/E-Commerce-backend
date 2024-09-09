@@ -8,9 +8,8 @@ import cartRouter from "./routes/cartRouter.js";
 import adminRouter from "./routes/adminRouter.js";
 import orderRouter from "./routes/orderRouter.js";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
 
-dotenv.config();
+
 
 mongoDB();
 const app = express();
