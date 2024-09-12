@@ -1,6 +1,6 @@
 import expres from "express";
 import { auth } from "../midleware/auth.js";
-import { getOrders, order, updateOrderStatus } from "../controllers/order.js";
+import { getOrders, order, updateOrderStatus, getOrdersOfUser } from "../controllers/order.js";
 
 const orderRouter = expres.Router();
 
