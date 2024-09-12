@@ -81,6 +81,23 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
+const getOrdersOfUser = async (req, res) => {
+  try {
+    const { token } = req.headers;
+    if (!token) {
+      return res.send({ success: false, message: "Token not found" });
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    const orders = await Order.find({ user: userId });
+
+    res.send({ success: true, orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.send({ success: false, message: error.message });
+  }
+};
+
 const getOrders = async (req, res) => {
   try {
     const orders = await Order.find({});
@@ -91,4 +108,4 @@ const getOrders = async (req, res) => {
   }
 };
 
-export { order, getOrders, updateOrderStatus };
+export { order, getOrders, updateOrderStatus, getOrdersOfUser};
