@@ -7,5 +7,6 @@ const orderRouter = expres.Router();
 orderRouter.post("/addToOrder", auth, order);
 orderRouter.post("/getOrders", auth, getOrders);
 orderRouter.post("/updateOrder", auth, updateOrderStatus);
+orderRouter.post("/getuserorders", auth, getOrdersOfUser);
 
 export default orderRouter;
